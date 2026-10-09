@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tony "Smoke" Stewart</title>
+<meta name="description" content="Tony &quot;Smoke&quot; Stewart: three-time NASCAR Cup champion, NASCAR Hall of Famer, NHRA Top Fuel driver, and owner of Tony Stewart Racing's nitro and sprint car teams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:ital,wdth,wght@0,50..125,400..900;1,50..125,400..900&family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#08090A;
+    --ink:#0F1012;
+    --panel:#15171A;
+    --line:#2A2D33;
+    --text:#F2F2F0;
+    --mute:#9A9EA6;
+    --smoke:#C9CDD3;
+    --heat:#FF4A12;
+    --heat-2:#FFB000;
+    --gutter:clamp(16px,4vw,56px);
+    --cut:clamp(14px,2vw,28px);
+    --carbon:
+      linear-gradient(27deg,#141516 5px,transparent 5px) 0 5px,
+      linear-gradient(207deg,#141516 5px,transparent 5px) 10px 0,
+      linear-gradient(27deg,#202226 5px,transparent 5px) 0 10px,
+      linear-gradient(207deg,#202226 5px,transparent 5px) 10px 5px,
+      linear-gradient(90deg,#191a1d 10px,transparent 10px),
+      linear-gradient(#1b1c1f 25%,#17181a 25%,#17181a 50%,transparent 50%,transparent 75%,#25272b 75%,#25272b);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--text);font-family:"Saira",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit}
+  .wrap{padding:0 var(--gutter);max-width:1480px;margin:0 auto}
+  .tag{font-family:"Chakra Petch",monospace;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+  .tag b{color:var(--heat);font-weight:700}
+
+  /* carbon fiber accent surface: twill weave + diagonal sheen */
+  .carbon{position:relative;background:var(--carbon);background-color:#131416;background-size:20px 20px}
+  .carbon::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.07) 48%,rgba(255,255,255,0) 62%),
+               linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.45))}
+
+  /* ---------- header ---------- */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s}
+  header.scrolled{background:rgba(8,9,10,.86);backdrop-filter:blur(10px)}
+  header.scrolled .bar{border-bottom-color:var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:68px;border-bottom:1px solid transparent}
+  .mark{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .badge{display:grid;place-items:center;width:46px;height:34px;clip-path:polygon(18% 0,100% 0,82% 100%,0 100%);background:var(--heat);font-style:italic;font-weight:900;font-size:19px;font-stretch:80%;color:#0b0b0b}
+  .mark span{font-weight:800;font-style:italic;font-stretch:115%;font-size:18px;letter-spacing:.04em;text-transform:uppercase}
+  .mark em{font-style:italic;color:var(--heat)}
+  nav ul{display:flex;gap:30px;list-style:none}
+  nav a{text-decoration:none;font-family:"Chakra Petch";font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--smoke);position:relative;padding:6px 0}
+  nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--heat);transform:skewX(-30deg);transition:right .25s}
+  nav a:hover{color:var(--text)}
+  nav a:hover::after{right:0}
+  .shop{font-family:"Chakra Petch";font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:10px 20px;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);background:var(--text);color:#0b0b0b;transition:background .2s}
+  .shop:hover{background:var(--heat)}
+  @media (max-width:860px){nav{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-3;
+    background:radial-gradient(120% 70% at 75% 110%,rgba(255,74,18,.32),transparent 60%),
+               radial-gradient(60% 50% at 10% 0%,rgba(255,255,255,.06),transparent 70%),var(--black)}
+  #smoke{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+  .streaks{position:absolute;inset:0;z-index:-2;overflow:hidden}
+  .streaks i{position:absolute;height:2px;left:-40%;width:40%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-30deg);animation:streak linear infinite}
+  .streaks i:nth-child(odd){background:linear-gradient(90deg,transparent,rgba(255,74,18,.7),transparent)}
+  @keyframes streak{to{left:140%}}
+  .hero-inner{width:100%;min-width:0;padding-top:120px;padding-bottom:clamp(36px,6vw,72px)}
+  .kicker{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin-bottom:18px}
+  .kicker::before{content:"";width:48px;height:3px;background:var(--heat);transform:skewX(-30deg)}
+  .smoke-word{font-weight:900;font-style:italic;font-stretch:125%;font-size:clamp(56px,19.5vw,330px);line-height:.8;letter-spacing:-.035em;text-transform:uppercase;margin-left:-.04em;
+    background:linear-gradient(180deg,#fff 0%,#e9eaec 38%,#8e939b 62%,#e0e2e5 70%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 10px 40px rgba(255,74,18,.25))}
+  .smoke-word .q{color:var(--heat);-webkit-text-fill-color:var(--heat);font-stretch:80%}
+  .hero-row{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(20px,3vw,36px)}
+  .hero-row h1{font-weight:800;font-style:italic;font-stretch:90%;font-size:clamp(28px,3.4vw,52px);line-height:1;text-transform:uppercase;letter-spacing:-.01em}
+  .hero-row h1 small{display:block;font-size:max(15px,.4em);line-height:1.35;letter-spacing:.02em;color:var(--smoke);font-style:normal;text-transform:none;font-stretch:100%;margin-top:12px;font-weight:600;max-width:36ch}
+  .hero-row p{color:var(--smoke);max-width:44ch}
+  .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+  .btn{display:inline-flex;align-items:center;gap:12px;font-family:"Chakra Petch";font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:16px 30px;clip-path:polygon(16px 0,100% 0,calc(100% - 16px) 100%,0 100%);transition:transform .2s,background .2s}
+  .btn svg{width:18px;height:18px;transition:transform .2s}
+  .btn:hover svg{transform:translateX(4px)}
+  .btn-heat{background:var(--heat);color:#0b0b0b}
+  .btn-heat:hover{background:var(--heat-2)}
+  .btn-ghost{background:var(--carbon);background-color:#131416;background-size:20px 20px;color:var(--text);box-shadow:inset 0 0 0 1px #3a3d44}
+  .btn-ghost:hover{color:var(--heat)}
+  @media (max-width:860px){.hero-row{grid-template-columns:1fr}}
+  @media (max-width:560px){.smoke-word{font-stretch:100%;font-size:21vw}.kicker::before{display:none}.mark span{font-size:15px}.mark .full{display:none}}
+
+  /* ---------- ticker ---------- */
+  .ticker{transform:skewY(-2deg);margin:-2px 0 0;background:var(--heat);color:#0b0b0b;overflow:hidden;position:relative;z-index:2;border-top:3px solid #0b0b0b}
+  .ticker-track{display:flex;width:max-content;animation:tick 32s linear infinite}
+  .ticker span{font-weight:900;font-style:italic;font-stretch:110%;font-size:clamp(18px,2.2vw,28px);text-transform:uppercase;white-space:nowrap;padding:12px 0}
+  .ticker span::after{content:"";display:inline-block;width:26px;height:10px;margin:0 26px;background:#0b0b0b;clip-path:polygon(30% 0,100% 0,70% 100%,0 100%);vertical-align:middle}
+  @keyframes tick{to{transform:translateX(-50%)}}
+
+  /* ---------- section shell ---------- */
+  section{padding:clamp(80px,11vw,150px) 0}
+  .sec-head{display:grid;grid-template-columns:auto 1fr;gap:20px 40px;align-items:end;margin-bottom:clamp(40px,6vw,72px)}
+  .sec-num{font-family:"Chakra Petch";font-weight:700;font-size:14px;color:var(--heat);letter-spacing:.1em}
+  .sec-head h2{grid-column:1/-1;font-weight:900;font-style:italic;font-stretch:100%;font-size:clamp(44px,7.4vw,112px);line-height:.86;text-transform:uppercase;letter-spacing:-.025em}
+  .sec-head h2 .out{color:transparent;-webkit-text-stroke:1.5px var(--smoke)}
+  .sec-head p{grid-column:1/-1;max-width:56ch;color:var(--smoke)}
+
+  /* ---------- story ---------- */
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:start}
+  .story-lede{font-size:clamp(22px,2.2vw,30px);line-height:1.3;font-weight:500}
+  .story-lede strong{color:var(--heat);font-weight:800;font-style:italic}
+  .story-body p+p{margin-top:1em}
+  .story-body p{color:var(--smoke)}
+  .shift{margin-top:40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px;padding:24px;clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,var(--cut) 100%,0 calc(100% - var(--cut)))}
+  .shift div{position:relative;z-index:1}
+  .shift b{display:block;font-weight:900;font-style:italic;font-size:clamp(26px,3vw,40px);line-height:1;text-transform:uppercase}
+  .shift .arrow{width:56px;height:20px;background:var(--heat);clip-path:polygon(0 35%,70% 35%,70% 0,100% 50%,70% 100%,70% 65%,0 65%);position:relative;z-index:1}
+  .shift .r{text-align:right}
+  @media (max-width:860px){.story-grid{grid-template-columns:1fr}}
+
+  /* ---------- stats ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+  .stat{padding:clamp(22px,2.6vw,36px);min-height:220px;display:flex;flex-direction:column;justify-content:space-between;clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,0 100%);transition:transform .25s}
+  .stat:hover{transform:translateY(-4px)}
+  .stat>*{position:relative;z-index:1}
+  .stat .n{font-weight:900;font-style:italic;font-stretch:90%;font-size:clamp(64px,7vw,112px);line-height:.85;letter-spacing:-.03em}
+  .stat .n sup{font-size:.36em;color:var(--heat);vertical-align:top;margin-left:4px}
+  .stat .l{font-family:"Chakra Petch";font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--smoke);border-top:2px solid var(--heat);padding-top:12px;margin-top:22px}
+  .stat.hot{background:var(--heat);color:#0b0b0b}
+  .stat.hot::after{display:none}
+  .stat.hot .n sup{color:#0b0b0b}
+  .stat.hot .l{color:#0b0b0b;border-color:#0b0b0b}
+  @media (max-width:1000px){.stats{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.stats{grid-template-columns:1fr}.stat{min-height:0}}
+
+  /* ---------- teams ---------- */
+  .teams{background:linear-gradient(180deg,var(--black),#0d0e10 30%,var(--black))}
+  .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px)}
+  .team{position:relative;display:flex;flex-direction:column;min-height:620px;text-decoration:none;overflow:hidden;isolation:isolate;
+    clip-path:polygon(0 0,calc(100% - 48px) 0,100% 48px,100% 100%,48px 100%,0 calc(100% - 48px));transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  .team:hover{transform:translateY(-6px)}
+  .team .face{position:relative;flex:1;padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;z-index:1}
+  .team .big{position:absolute;right:-.06em;bottom:-.16em;font-weight:900;font-style:italic;font-stretch:125%;font-size:clamp(150px,19vw,300px);line-height:1;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.08);z-index:0;pointer-events:none;transition:-webkit-text-stroke-color .35s}
+  .team:hover .big{-webkit-text-stroke-color:rgba(255,74,18,.35)}
+  .team .meta{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .team .pill{font-family:"Chakra Petch";font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;background:var(--heat);color:#0b0b0b;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+  .team h3{margin-top:auto;font-weight:900;font-style:italic;font-stretch:105%;font-size:clamp(46px,5.6vw,88px);line-height:.86;text-transform:uppercase;letter-spacing:-.02em}
+  .team h3 em{color:var(--heat)}
+  .team .desc{margin-top:16px;color:var(--smoke);max-width:46ch}
+  .roster{margin-top:26px;display:grid;gap:2px}
+  .roster div{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;padding:12px 16px;background:rgba(8,9,10,.6);backdrop-filter:blur(4px);border-left:3px solid var(--heat)}
+  .roster b{font-weight:800;font-style:italic;text-transform:uppercase;font-size:18px;letter-spacing:.01em}
+  .roster span{font-family:"Chakra Petch";font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);text-align:right}
+  .go{margin-top:26px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;border-top:1px solid var(--line)}
+  .go span{font-family:"Chakra Petch";font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:14px}
+  .go i{display:grid;place-items:center;width:58px;height:40px;background:var(--text);color:#0b0b0b;clip-path:polygon(25% 0,100% 0,75% 100%,0 100%);transition:background .25s,transform .25s}
+  .team:hover .go i{background:var(--heat);transform:translateX(6px)}
+  .go svg{width:20px;height:20px}
+  .team.sprint .glow{position:absolute;inset:auto -20% -30% auto;width:80%;aspect-ratio:1;background:radial-gradient(circle,rgba(255,176,0,.22),transparent 65%);z-index:0}
+  .team.nitro .glow{position:absolute;inset:auto auto -30% -20%;width:90%;aspect-ratio:1;background:radial-gradient(circle,rgba(255,74,18,.28),transparent 65%);z-index:0}
+  @media (max-width:960px){.team-grid{grid-template-columns:1fr}.team{min-height:540px}}
+  @media (max-width:560px){.roster div{grid-template-columns:1fr;gap:2px}.roster span{text-align:left}.team{clip-path:polygon(0 0,calc(100% - 28px) 0,100% 28px,100% 100%,28px 100%,0 calc(100% - 28px))}}
+
+  /* ---------- timeline ---------- */
+  .tl{position:relative;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:4px}
+  .tl li{list-style:none;padding:22px 20px 26px;background:var(--panel);border-top:3px solid var(--line);transition:border-color .2s,background .2s}
+  .tl li:hover{border-top-color:var(--heat);background:#1b1d21}
+  .tl .y{font-weight:900;font-style:italic;font-size:34px;line-height:1;color:var(--text)}
+  .tl .y.hot{color:var(--heat)}
+  .tl .e{margin-top:10px;font-size:15px;color:var(--smoke);line-height:1.45}
+  .tl .k{font-family:"Chakra Petch";font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-top:14px}
+
+  /* ---------- nitro numbers band ---------- */
+  .band{padding:0}
+  .band-inner{display:grid;grid-template-columns:repeat(3,1fr);clip-path:polygon(0 var(--cut),var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%)}
+  .band-inner>div{position:relative;z-index:1;padding:clamp(28px,4vw,56px);border-right:1px solid rgba(255,255,255,.08)}
+  .band-inner>div:last-child{border-right:0}
+  .band .v{font-weight:900;font-style:italic;font-stretch:85%;font-size:clamp(52px,6vw,96px);line-height:.9;letter-spacing:-.02em}
+  .band .v small{font-size:.38em;color:var(--heat);margin-left:6px}
+  .band .d{margin-top:10px;color:var(--smoke);font-size:15px;max-width:30ch}
+  @media (max-width:760px){.band-inner{grid-template-columns:1fr}.band-inner>div{border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}}
+
+  /* ---------- shop / follow ---------- */
+  .closer{display:grid;grid-template-columns:1.3fr 1fr;gap:4px}
+  .shop-card{position:relative;padding:clamp(32px,5vw,64px);background:var(--heat);color:#0b0b0b;text-decoration:none;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 100%,40px 100%,0 calc(100% - 40px))}
+  .shop-card h3{font-weight:900;font-style:italic;font-size:clamp(44px,5.5vw,84px);line-height:.86;text-transform:uppercase;letter-spacing:-.02em}
+  .shop-card p{margin-top:16px;max-width:40ch;font-weight:500}
+  .shop-card .stripes{position:absolute;right:-30px;top:0;bottom:0;width:45%;background:repeating-linear-gradient(-60deg,rgba(0,0,0,.14) 0 14px,transparent 14px 34px)}
+  .shop-card .btn{margin-top:28px;background:#0b0b0b;color:var(--text);position:relative}
+  .follow{padding:clamp(32px,5vw,64px);clip-path:polygon(0 0,calc(100% - 40px) 0,100% 40px,100% 100%,0 100%)}
+  .follow>*{position:relative;z-index:1}
+  .follow h3{font-weight:900;font-style:italic;font-size:clamp(32px,3.4vw,48px);line-height:.95;text-transform:uppercase}
+  .socials{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+  .socials a{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:rgba(8,9,10,.7);text-decoration:none;font-family:"Chakra Petch";font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;transition:background .2s,color .2s}
+  .socials a:hover{background:var(--heat);color:#0b0b0b}
+  .socials a::after{content:"\2197"}
+  @media (max-width:860px){.closer{grid-template-columns:1fr}}
+
+  /* ---------- footer ---------- */
+  footer{padding:56px 0 40px;border-top:1px solid var(--line);margin-top:clamp(80px,10vw,140px)}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:end}
+  .foot .sig{font-weight:900;font-style:italic;font-stretch:125%;font-size:clamp(48px,9vw,140px);line-height:.8;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px #3a3d44}
+  .foot ul{list-style:none;display:flex;flex-wrap:wrap;gap:22px}
+  .foot ul a{text-decoration:none;font-family:"Chakra Petch";font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+  .foot ul a:hover{color:var(--heat)}
+  .fine{margin-top:28px;font-size:13px;color:#6b6f77}
+
+  /* ---------- reveal ---------- */
+  .rv{opacity:0;transform:translateX(-40px) skewX(-6deg);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .rv{opacity:1;transform:none;transition:none}
+    .ticker-track,.streaks i{animation:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap bar">
+    <a class="mark" href="#top" aria-label="Tony Stewart home">
+      <span class="badge">14</span>
+      <span><span class="full">Tony </span><em>“Smoke”</em><span class="full"> Stewart</span></span>
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#story">Story</a></li>
+        <li><a href="#record">Record</a></li>
+        <li><a href="#teams">Teams</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+      </ul>
+    </nav>
+    <a class="shop" href="https://tonystewartstore.com/" target="_blank" rel="noopener">Shop</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" aria-label="Smoke">
+    <canvas id="smoke" aria-hidden="true"></canvas>
+    <div class="streaks" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="kicker tag">NHRA Top Fuel <b>/</b> NASCAR Hall of Fame <b>/</b> Team owner</div>
+      <div class="smoke-word" aria-hidden="true"><span class="q">“</span>Smoke<span class="q">”</span></div>
+      <div class="hero-row">
+        <h1>Tony Stewart<small>Three Cup titles on ovals. Now he's chasing 330 mph down a straight line.</small></h1>
+        <div>
+          <p>He won in sprint cars, IndyCar and NASCAR. Now he races nitro and owns two of the best teams on dirt and drag strips.</p>
+          <div class="ctas">
+            <a class="btn btn-heat" href="https://www.tsrnitro.com/" target="_blank" rel="noopener">TSR Nitro
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12h15M13 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-ghost" href="https://www.tonystewartracing.com/" target="_blank" rel="noopener">TSR Sprint Cars
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12h15M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>3× NASCAR Cup Champion</span><span>1997 IndyCar Champion</span><span>1995 USAC Triple Crown</span><span>NASCAR Hall of Fame 2020</span><span>11,000 Horsepower</span><span>330+ MPH</span><span>1,000 Feet</span>
+      <span>3× NASCAR Cup Champion</span><span>1997 IndyCar Champion</span><span>1995 USAC Triple Crown</span><span>NASCAR Hall of Fame 2020</span><span>11,000 Horsepower</span><span>330+ MPH</span><span>1,000 Feet</span>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <section id="story">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="sec-num">01 / The Story</span>
+        <h2>From circles<br><span class="out">to straight lines</span></h2>
+      </div>
+      <div class="story-grid">
+        <p class="story-lede rv">They call him <strong>Smoke</strong>. The name dates back to his early sprint car days, when he'd <strong>cook the right-rear tire</strong> chasing every last tenth.</p>
+        <div class="story-body rv">
+          <p>Stewart grew up in Columbus, Indiana. He came through USAC open-wheel racing, won the 1997 IndyCar title, and then put together one of the best careers NASCAR has seen: Cup championships in 2002, 2005 and 2011, two Brickyard 400 wins at his home track, and a place in the Hall of Fame.</p>
+          <p>After that came the hardest kind of racing to get right. Tony Stewart Racing went nitro in 2022, and Matt Hagan brought home a Funny Car title in only the second season. Then Smoke got in the car himself: a Top Fuel dragster making 11,000 horsepower and covering 1,000 feet in under four seconds.</p>
+          <div class="shift carbon">
+            <div><span class="tag">Then</span><b>500 miles</b></div>
+            <span class="arrow" aria-hidden="true"></span>
+            <div class="r"><span class="tag">Now</span><b>3.7 seconds</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECORD -->
+  <section id="record" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="sec-num">02 / The Record</span>
+        <h2>Built to <span class="out">win anything</span></h2>
+      </div>
+      <div class="stats">
+        <div class="stat hot rv"><span class="n" data-count="3">3</span><span class="l">NASCAR Cup Series championships: 2002, 2005, 2011</span></div>
+        <div class="stat carbon rv"><span class="n" data-count="49">49</span><span class="l">NASCAR Cup Series wins</span></div>
+        <div class="stat carbon rv"><span class="n">’97</span><span class="l">IndyCar (IRL) champion</span></div>
+        <div class="stat carbon rv"><span class="n">’20</span><span class="l">Inducted into the NASCAR Hall of Fame</span></div>
+        <div class="stat carbon rv"><span class="n" data-count="2">2</span><span class="l">Brickyard 400 wins at Indianapolis</span></div>
+        <div class="stat carbon rv"><span class="n">’95</span><span class="l">USAC Triple Crown: Midget, Sprint and Silver Crown titles in one season</span></div>
+        <div class="stat carbon rv"><span class="n">’99</span><span class="l">Cup Series Rookie of the Year</span></div>
+        <div class="stat hot rv"><span class="n">’23</span><span class="l">First NHRA title as an owner (Hagan, Funny Car)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NITRO NUMBERS -->
+  <section class="band" aria-label="Top Fuel by the numbers">
+    <div class="wrap">
+      <div class="band-inner carbon">
+        <div><div class="v">11,000<small>HP</small></div><p class="d">A supercharged, nitromethane-burning Hemi under full load.</p></div>
+        <div><div class="v">330+<small>MPH</small></div><p class="d">Top speed at the stripe, reached in just 1,000 feet.</p></div>
+        <div><div class="v">0.8<small>SEC</small></div><p class="d">Zero to 100 mph, quicker than you can blink twice.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAMS -->
+  <section id="teams" class="teams">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="sec-num">03 / The Teams</span>
+        <h2>Tony Stewart <span class="out">Racing</span></h2>
+        <p>Two disciplines, one standard. Follow the nitro program on the drag strip and the 410 sprint car program on dirt.</p>
+      </div>
+      <div class="team-grid">
+        <a class="team nitro carbon rv" href="https://www.tsrnitro.com/" target="_blank" rel="noopener">
+          <span class="glow" aria-hidden="true"></span>
+          <span class="big" aria-hidden="true">NTR</span>
+          <div class="face">
+            <div class="meta"><span class="tag">NHRA Mission Foods Drag Racing Series</span><span class="pill">Nitro</span></div>
+            <h3>TSR<br><em>Nitro</em></h3>
+            <p class="desc">Dodge//SRT power in Top Fuel and Funny Car. NHRA world champions in 2023 and contending again in 2026.</p>
+            <div class="roster">
+              <div><b>Matt Hagan</b><span>Funny Car · Dodge//SRT Hellcat</span></div>
+              <div><b>Leah Pruett</b><span>Top Fuel · Dodge//SRT</span></div>
+              <div><b>Tony Schumacher</b><span>Top Fuel · Joins 2027</span></div>
+            </div>
+            <div class="go"><span>tsrnitro.com</span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 18 18 6M8 6h10v10"/></svg></i></div>
+          </div>
+        </a>
+        <a class="team sprint carbon rv" href="https://www.tonystewartracing.com/" target="_blank" rel="noopener">
+          <span class="glow" aria-hidden="true"></span>
+          <span class="big" aria-hidden="true">#24</span>
+          <div class="face">
+            <div class="meta"><span class="tag">Kubota High Limit Racing</span><span class="pill">Sprint Car</span></div>
+            <h3>TSR<br><em>Sprint Cars</em></h3>
+            <p class="desc">Tony Stewart/Curb-Agajanian Racing runs 410 winged sprint cars on dirt. In 2026: the 4-Crown Nationals title and a $100,000 Gold Cup.</p>
+            <div class="roster">
+              <div><b>Rico Abreu</b><span>No. 24 · 410 Winged Sprint</span></div>
+              <div><b>Marquee events</b><span>Kings Royal · Knoxville Nationals</span></div>
+            </div>
+            <div class="go"><span>tonystewartracing.com</span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 18 18 6M8 6h10v10"/></svg></i></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="sec-num">04 / Timeline</span>
+        <h2>Laps <span class="out">& launches</span></h2>
+      </div>
+      <ol class="tl">
+        <li class="rv"><div class="y">1995</div><p class="e">Becomes the first driver to sweep USAC's Midget, Sprint and Silver Crown titles in a single season.</p><p class="k">USAC</p></li>
+        <li class="rv"><div class="y">1997</div><p class="e">Wins the Indy Racing League championship.</p><p class="k">IndyCar</p></li>
+        <li class="rv"><div class="y">1999</div><p class="e">Cup Series Rookie of the Year, with three wins.</p><p class="k">NASCAR</p></li>
+        <li class="rv"><div class="y hot">2002</div><p class="e">First NASCAR Cup Series championship.</p><p class="k">NASCAR</p></li>
+        <li class="rv"><div class="y hot">2005</div><p class="e">Second Cup title, plus a Brickyard 400 win at Indianapolis.</p><p class="k">NASCAR</p></li>
+        <li class="rv"><div class="y hot">2011</div><p class="e">Third Cup title, clinched on a tiebreaker after winning five of the ten Chase races.</p><p class="k">NASCAR</p></li>
+        <li class="rv"><div class="y">2020</div><p class="e">Inducted into the NASCAR Hall of Fame.</p><p class="k">Legacy</p></li>
+        <li class="rv"><div class="y">2022</div><p class="e">TSR goes drag racing with Leah Pruett in Top Fuel and Matt Hagan in Funny Car.</p><p class="k">NHRA</p></li>
+        <li class="rv"><div class="y hot">2023</div><p class="e">Hagan wins the Funny Car world championship, Smoke's first NHRA title as an owner.</p><p class="k">NHRA</p></li>
+        <li class="rv"><div class="y">2024</div><p class="e">Smoke climbs into the TSR Top Fuel dragster himself for a full season.</p><p class="k">NHRA</p></li>
+        <li class="rv"><div class="y">2026</div><p class="e">Drives Top Fuel for Elite Motorsports. Rico Abreu joins the TSR sprint car program.</p><p class="k">Now</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CLOSER -->
+  <section style="padding-top:0;padding-bottom:0">
+    <div class="wrap closer">
+      <a class="shop-card rv" href="https://tonystewartstore.com/" target="_blank" rel="noopener">
+        <span class="stripes" aria-hidden="true"></span>
+        <span class="tag" style="color:#0b0b0b;position:relative">Official store</span>
+        <h3 style="position:relative">Wear the<br>Smoke</h3>
+        <p style="position:relative">TSR Nitro, sprint car and Smoke gear, straight from the team.</p>
+        <span class="btn">Shop now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12h15M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <div class="follow carbon rv">
+        <span class="tag">Follow along</span>
+        <h3>Stay in<br>the pit lane</h3>
+        <div class="socials">
+          <a href="https://www.youtube.com/c/TonyStewart14" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://www.instagram.com/tonystewart_rcg/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@tonystewartracing" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://twitter.com/TonyStewart_Rcg" target="_blank" rel="noopener">X</a>
+          <a href="https://www.instagram.com/tsrnitro/" target="_blank" rel="noopener">TSR Nitro IG</a>
+          <a href="https://www.facebook.com/tonystewartracing/" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="sig" aria-hidden="true">SMOKE</div>
+      <ul>
+        <li><a href="https://www.tsrnitro.com/" target="_blank" rel="noopener">TSR Nitro</a></li>
+        <li><a href="https://www.tonystewartracing.com/" target="_blank" rel="noopener">TSR Sprint Cars</a></li>
+        <li><a href="https://www.tsrnitro.com/schedule/" target="_blank" rel="noopener">Nitro Schedule</a></li>
+        <li><a href="https://www.tonystewartracing.com/schedule/" target="_blank" rel="noopener">Sprint Schedule</a></li>
+        <li><a href="https://tonystewartstore.com/" target="_blank" rel="noopener">Store</a></li>
+      </ul>
+    </div>
+    <p class="fine">Concept redesign of tonystewart.com. Not affiliated with or endorsed by Tony Stewart or Tony Stewart Racing.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // header state
+  const hdr = document.querySelector('header');
+  const onScroll = () => hdr.classList.toggle('scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // reveal on scroll, staggered within each batch
+  const io = new IntersectionObserver(es => {
+    let i = 0;
+    es.forEach(e => { if (e.isIntersecting) { e.target.style.transitionDelay = (i++ * 60) + 'ms'; e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.15});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // count-up stats
+  const cio = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, end = +el.dataset.count, t0 = performance.now();
+    cio.unobserve(el);
+    if (reduce) return;
+    const step = t => { const p = Math.min(1, (t - t0) / 900); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }), {threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+  // speed streaks
+  const st = document.querySelector('.streaks');
+  for (let i = 0; i < 14; i++) {
+    const s = document.createElement('i');
+    s.style.top = (8 + Math.random() * 84) + '%';
+    s.style.animationDuration = (0.9 + Math.random() * 1.6) + 's';
+    s.style.animationDelay = (-Math.random() * 3) + 's';
+    s.style.opacity = (0.25 + Math.random() * 0.6).toFixed(2);
+    st.appendChild(s);
+  }
+
+  // tire smoke: soft particles rolling up from the lower right
+  const cv = document.getElementById('smoke'), cx = cv.getContext('2d');
+  let W, H, dpr, parts = [];
+  const sprite = document.createElement('canvas'); sprite.width = sprite.height = 128;
+  const sg = sprite.getContext('2d'), grd = sg.createRadialGradient(64,64,0,64,64,64);
+  grd.addColorStop(0,'rgba(220,222,226,.55)'); grd.addColorStop(.5,'rgba(190,194,200,.18)'); grd.addColorStop(1,'rgba(180,184,190,0)');
+  sg.fillStyle = grd; sg.fillRect(0,0,128,128);
+  const size = () => { dpr = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr,0,0,dpr,0,0); };
+  const spawn = () => ({ x: W * (0.55 + Math.random() * 0.5), y: H + 40, r: 60 + Math.random() * 120, vx: -(0.6 + Math.random() * 1.6), vy: -(0.3 + Math.random() * 0.9), a: 0, life: 0, max: 380 + Math.random() * 300, rot: Math.random() * 6.28, vr: (Math.random() - .5) * 0.004 });
+  size(); addEventListener('resize', size);
+  for (let i = 0; i < 60; i++) { const p = spawn(); p.life = Math.random() * p.max; p.x += p.vx * p.life; p.y += p.vy * p.life; p.r += p.life * 0.35; parts.push(p); }
+  const draw = () => {
+    cx.clearRect(0,0,W,H);
+    for (const p of parts) {
+      p.life++; p.x += p.vx; p.y += p.vy; p.r += 0.35; p.rot += p.vr;
+      const k = p.life / p.max; p.a = Math.sin(Math.PI * Math.min(1, k)) * 0.5;
+      cx.save(); cx.globalAlpha = p.a; cx.translate(p.x, p.y); cx.rotate(p.rot); cx.drawImage(sprite, -p.r, -p.r, p.r * 2, p.r * 2); cx.restore();
+      if (p.life > p.max) Object.assign(p, spawn());
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  };
+  draw();
+})();
+</script>
+</body>
+</html>
